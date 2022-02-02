@@ -5,3 +5,5 @@ This app will use the twitch API to allow for a more customizable viewing experi
 # Dependencies
 
 -npm install @mui/material @emotion/react @emotion/styled
+-npm install axios
+-npm i react-router
