@@ -3,24 +3,48 @@ import api from '../api'
 import axios from 'axios';
 
 const Test = () => {
-    const [games, setGames] = useState([])
+    // const [games, setGames] = useState([])
+    const [search, setSearch] = useState('')
+    const [searchResults, setSearchResults] = useState([])
+    const [showResults, setShowResults] = useState(false)
+    const [streamId, setStreamId] = useState('')
 
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const results = await api.get('https://api.twitch.tv/helix/games/top')
+    //         //console.log(results.data)
+
+    //         setGames(results.data.data)
+    //     }
+    //     fetchData();
+    // })
 
     useEffect(() => {
-        const fetchData = async () => {
-            const results = await api.get('https://api.twitch.tv/helix/games/top')
-            //console.log(results.data)
+        const fetchStreams = async () => {
+            const results = await api.get('https://api.twitch.tv/helix/search/channels' + search)
+            console.log(results.data)
 
-            setGames(results.data.data)
+            setSearchResults(results.data.data)
         }
-        fetchData();
-    })
+        fetchStreams();
+    }, [search])
+
 
     return (
         <div>
+            <input type="text" 
+            placeholder='Search for Channels...' 
+            onFocus={() => setShowResults(true)} 
+            onBlur={() => setShowResults(false)}
+            onChange={event => {setSearch('?query=' + event.target.value)}} />
             {
-                games.map((game) => (
-                    <div>{game.name}</div>
+                searchResults.map((result) => (
+                    <div>
+                        { showResults &&
+                            result.broadcaster_login
+                        }
+                    </div>
                 ))
             }
         </div>
