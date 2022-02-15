@@ -18,6 +18,7 @@ const Test = () => {
     //         setGames(results.data.data)
     //     }
     //     fetchData();
+    //      <iframe src="https://player.twitch.tv/?channel=26261471&parent=localhost" frameborder="0" title="test"></iframe>
     // })
 
     useEffect(() => {
