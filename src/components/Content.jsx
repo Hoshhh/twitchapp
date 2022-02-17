@@ -6,9 +6,10 @@ const useStyles = makeStyles({
   container: {
       backgroundColor: '#323F4B',
       color: '#F5F7FA',
-      width: '100%',
       height:'100vh',
-      padding: '0px'
+      width: '100%',
+      padding: '0px',
+      margin: '0px'
     },
   item: {
     display: 'flex',

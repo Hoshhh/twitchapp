@@ -4,6 +4,7 @@ import './app.css'
 import Leftbar from './components/Leftbar';
 import Content from './components/Content';
 
+
 function App() {
   return (
     <div className="App">

@@ -7,4 +7,5 @@ This app will use the twitch API to allow for a more customizable viewing experi
 -npm install @mui/material @emotion/react @emotion/styled
 -npm install axios
 -npm i react-router
-npm install @material-ui/core
+-npm install @material-ui/core
+-npm install @mui/icons-material
