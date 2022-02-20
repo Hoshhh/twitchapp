@@ -1,6 +1,6 @@
 # Twitch App Project
 
-This app will use the twitch API to allow for a more customizable viewing experience.
+This app will use the twitch API to allow for a more customizable viewing experience. This site will allow users to view multiple twitch streams at once (up to 8).
 
 # Dependencies
 
