@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
+import { Box, makeStyles, Paper } from '@material-ui/core';
 import Container from '@mui/material/Container';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,6 +15,10 @@ const Content = () => {
   const classes = useStyles()
   return <Container className={classes.container} maxWidth={false}>
     Content
+    <Box sx={{ display: 'flex', flexWrap: 'wrap', width: 1280, height: 320}}>
+      <Paper>helloooooooooooooooooooooooooo</Paper>
+      <Paper>helloooooooooooooooooooooooooo</Paper>
+    </Box>
   </Container>;
 };
 

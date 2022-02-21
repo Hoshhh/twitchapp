@@ -34,35 +34,35 @@ const Leftbar = () => {
     const classes = useStyles();
   return <Container className={classes.container}>
     <div className={classes.item}>
-      <AccountCircle />
+      <AccountCircle fontSize="large" />
       <Typography className={classes.text}>Streamer</Typography>
     </div>
     <div className={classes.item}>
-      <AccountCircle />
+      <AccountCircle fontSize="large" />
       <Typography className={classes.text}>Streamer</Typography>
     </div>
     <div className={classes.item}>
-      <AccountCircle />
+      <AccountCircle fontSize="large" />
       <Typography className={classes.text}>Streamer</Typography>
     </div>
     <div className={classes.item}>
-      <AccountCircle />
+      <AccountCircle fontSize="large" />
       <Typography className={classes.text}>Streamer</Typography>
     </div>
     <div className={classes.item}>
-      <AccountCircle />
+      <AccountCircle fontSize="large" />
       <Typography className={classes.text}>Streamer</Typography>
     </div>
     <div className={classes.item}>
-      <AccountCircle />
+      <AccountCircle fontSize="large" />
       <Typography className={classes.text}>Streamer</Typography>
     </div>
     <div className={classes.item}>
-      <AccountCircle />
+      <AccountCircle fontSize="large" />
       <Typography className={classes.text}>Streamer</Typography>
     </div>
     <div className={classes.item}>
-      <AccountCircle />
+      <AccountCircle fontSize="large" />
       <Typography className={classes.text}>Streamer</Typography>
     </div>
   </Container>
