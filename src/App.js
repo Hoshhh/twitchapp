@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Test from './components/Test'
 import Grid from '@mui/material/Grid'
 import './app.css'
@@ -7,9 +8,11 @@ import Navbar from './components/Navbar';
 
 
 function App() {
+  const [data, setData] = useState({})
+  console.log("App: " + data)
   return (
     <div className="App">
-      <Navbar />
+      <Navbar changeData={ data => setData(data)} />
       <Grid container spacing={0}>
         <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
           <Leftbar />

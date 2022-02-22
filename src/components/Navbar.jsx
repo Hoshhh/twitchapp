@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import api from '../api'
 import { alpha, AppBar, IconButton, InputBase, makeStyles, Toolbar, Typography } from '@material-ui/core'
-import { Cancel, GitHub, Search } from '@mui/icons-material'
+import { Cancel, GitHub, Search, SettingsSystemDaydreamTwoTone } from '@mui/icons-material'
 
 const useStyles = makeStyles((theme) => ({
     appbar: {
@@ -64,10 +65,27 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const Navbar = () => {
+const Navbar = (props) => {
     const [open, setOpen] = useState(false)
     const classes = useStyles({ open })
 
+    const [search, setSearch] = useState('')
+    const [searchResults, setSearchResults] = useState([])
+    const [parentData, setParentData] = useState([])
+
+
+    useEffect(() => {
+        const fetchStreams = async () => {
+            const results = await api.get('https://api.twitch.tv/helix/search/channels' + search)
+            console.log(results.data.data)
+            
+            setSearchResults(results.data.data)
+            //setParentData(results.data.data.map((result) => (result.broadcaster_login)))
+            props.changeData(results.data.data.map((result) => (result.broadcaster_login)))
+            //console.log(parentData)
+        }
+        fetchStreams();
+    }, [search])
 
     return <AppBar position="fixed" className={classes.appbar}>
       <Toolbar className={classes.toolbar}>
@@ -79,7 +97,11 @@ const Navbar = () => {
           </Typography>
           <div className={classes.search}>
             <Search />
-            <InputBase placeholder='Search streams...' className={classes.input} />
+            <InputBase 
+                placeholder='Search streams...' 
+                className={classes.input} 
+                onChange={event => {setSearch('?query=' + event.target.value)}}
+            />
             <div className={classes.cancel}>
                 <Cancel onClick={() => setOpen(false)}/>
             </div>
