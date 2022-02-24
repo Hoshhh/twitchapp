@@ -8,48 +8,44 @@ const useStyles = makeStyles((theme) => ({
       color: '#F5F7FA',
       paddingTop: theme.spacing(10),
       height: '100vh',
+      display: (props) => (props.showResults ? "block" : "none")
     },
     searchcontainer: {
       width: '33%',
-      height: '128px',
+      height: '148px',
       backgroundColor: alpha('#F5F7FA', 0.15),
       borderRadius: theme.shape.borderRadius,
       margin: 'auto',
       overflow: 'hidden',
+      display: (props) => (props.showResults ? "block" : "none")
     },
     searchbox: {
       overflow: 'auto',
       width: '100%',
       height: '100%',
-      paddingRight: '20px'
+      paddingRight: '20px',
+      display: (props) => (props.showResults ? "block" : "none")
     },
     searchitems: {
       listStyle: 'none',
       margin: '10px',
-      fontSize: ''
+      display: (props) => (props.showResults ? "block" : "none")
     }
 }));
 
-const Content = () => {
-  const classes = useStyles()
+const Content = ({ data, showResults}) => {
+  const classes = useStyles({ showResults })
+  console.log(data)
   return <Container className={classes.container} maxWidth={false}>
     <div className={classes.searchcontainer}>
       <div className={classes.searchbox}>
-        <li className={classes.searchitems}>
-         <Typography varaint="h5">streamer</Typography>
-        </li>
-        <li className={classes.searchitems}>
-          <Typography varaint="h5">streamer</Typography>
-        </li>
-        <li className={classes.searchitems}>
-          <Typography varaint="h5">streamer</Typography>
-        </li>
-        <li className={classes.searchitems}>
-          <Typography varaint="h5">streamer</Typography>
-        </li>
-        <li className={classes.searchitems}>
-          <Typography varaint="h5">streamer</Typography>
-        </li>
+        {
+          data.map((streamer) => (
+          <li className={classes.searchitems}>
+            <Typography varaint="h5">{streamer}</Typography>
+          </li>
+          ))
+        }
       </div>
     </div>
     
