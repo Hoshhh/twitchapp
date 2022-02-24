@@ -7,6 +7,7 @@ const useStyles = makeStyles((theme) => ({
     appbar: {
       backgroundColor: '#1F2933',
       color: '#F5F7FA',
+      maxHeight: '64px'
     },
 
     toolbar: {
@@ -39,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down("xs")]: {
             display: (props) => (props.open ? "flex" : "none"),
         },
-        
     },
     searchButton: {
         marginRight: theme.spacing(2),
@@ -49,8 +49,10 @@ const useStyles = makeStyles((theme) => ({
     },
     input: {
         color: '#F5F7FA',
-        marginLeft: theme.spacing(1)
+        marginLeft: theme.spacing(1),
+        width: '100%',
     },
+    
     cancel: {
         [theme.breakpoints.up("sm")]: {
             display: 'none',
