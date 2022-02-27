@@ -1,7 +1,6 @@
 import React from 'react';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { makeStyles, Typography } from '@material-ui/core';
 import { AccountCircle } from '@mui/icons-material';
 

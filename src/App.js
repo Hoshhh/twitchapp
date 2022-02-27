@@ -10,8 +10,8 @@ import Navbar from './components/Navbar';
 function App() {
   const [data, setData] = useState([])
   const [showResults, setShowResults] = useState(false)
-  console.log("App: " + data)
-  console.log("Show: " + showResults)
+  //console.log("App: " + data)
+  //console.log("Show: " + showResults)
   return (
     <div className="App">
       <Navbar 

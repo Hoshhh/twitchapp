@@ -72,18 +72,22 @@ const Navbar = (props) => {
     const classes = useStyles({ open })
 
     const [search, setSearch] = useState('')
-    const [searchResults, setSearchResults] = useState([]) 
+    const [searchResults, setSearchResults] = useState({}) 
 
 
     useEffect(() => {
         const fetchStreams = async () => {
             const results = await api.get('https://api.twitch.tv/helix/search/channels' + search)
-            console.log(results.data.data)
+            //console.log(results.data.data)
             
             setSearchResults(results.data.data)
             //setParentData(results.data.data.map((result) => (result.broadcaster_login)))
-            props.changeData(results.data.data.map((result) => (result.broadcaster_login)))
-            //console.log(parentData)
+            props.changeData(results.data.data.map(result => (
+                {
+                    name: `${result.broadcaster_login}`, 
+                    id: result.id
+                }
+            )))
         }
         fetchStreams();
     }, [search])
@@ -103,7 +107,7 @@ const Navbar = (props) => {
                 className={classes.input} 
                 onChange={event => {setSearch('?query=' + event.target.value)}}
                 onFocus={() => props.showResults(true)}
-                onBlur={() => props.showResults(false)}
+                
             />
             <div className={classes.cancel}>
                 <Cancel onClick={() => setOpen(false)}/>

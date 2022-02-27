@@ -1,6 +1,8 @@
-import React from 'react';
-import { alpha, Box, makeStyles, Paper, Typography } from '@material-ui/core';
+import React, {useEffect, useState} from 'react';
+import { alpha, Box, IconButton, makeStyles, Paper, Typography } from '@material-ui/core';
 import Container from '@mui/material/Container';
+import api from '../api';
+import { AddCircleOutline } from '@mui/icons-material';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -29,20 +31,44 @@ const useStyles = makeStyles((theme) => ({
     searchitems: {
       listStyle: 'none',
       margin: '10px',
+      marginRight: '0px',
       display: (props) => (props.showResults ? "block" : "none")
+    },
+    streamerContainer: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      '&:hover': {
+            backgroundColor: alpha('#F5F7FA', 0.25)
+        },
+    },
+    addButton: {
+      padding: '0px',
+      color: '#F5F7FA'
     }
 }));
 
 const Content = ({ data, showResults}) => {
+
+  const fetchUserAvatar = async (id) => {
+    const results = await api.get('https://api.twitch.tv/helix/users?id=' + id)
+    console.log(results.data.data)
+  }
+
   const classes = useStyles({ showResults })
   console.log(data)
+  
   return <Container className={classes.container} maxWidth={false}>
     <div className={classes.searchcontainer}>
       <div className={classes.searchbox}>
         {
           data.map((streamer) => (
           <li className={classes.searchitems}>
-            <Typography varaint="h5">{streamer}</Typography>
+            <div className={classes.streamerContainer}>
+              <Typography varaint="h5">{streamer.name}</Typography>
+              <IconButton className={classes.addButton} onClick={(id) => fetchUserAvatar(streamer.id)}>
+                <AddCircleOutline />
+              </IconButton>
+            </div>
           </li>
           ))
         }
