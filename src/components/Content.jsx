@@ -3,6 +3,7 @@ import { alpha, Box, IconButton, makeStyles, Paper, Typography } from '@material
 import Container from '@mui/material/Container';
 import api from '../api';
 import { AddCircleOutline } from '@mui/icons-material';
+import Streams from './Streams';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -48,14 +49,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Content = ({ data, showResults}) => {
+  const [streamList, setStreamList] = useState([])
 
   const fetchUserAvatar = async (id) => {
     const results = await api.get('https://api.twitch.tv/helix/users?id=' + id)
     console.log(results.data.data)
+    
+    setStreamList(streamList.concat(<Streams streamId={results.data.data[0].id}/>))
+    //showResults.setShowResults(false)
   }
 
   const classes = useStyles({ showResults })
-  console.log(data)
+  //console.log(data)
+  //console.log(showResults)
   
   return <Container className={classes.container} maxWidth={false}>
     <div className={classes.searchcontainer}>
@@ -65,7 +71,7 @@ const Content = ({ data, showResults}) => {
           <li className={classes.searchitems}>
             <div className={classes.streamerContainer}>
               <Typography varaint="h5">{streamer.name}</Typography>
-              <IconButton className={classes.addButton} onClick={(id) => fetchUserAvatar(streamer.id)}>
+              <IconButton className={classes.addButton} onMouseDown={(id) => fetchUserAvatar(streamer.id)}>
                 <AddCircleOutline />
               </IconButton>
             </div>
@@ -74,7 +80,8 @@ const Content = ({ data, showResults}) => {
         }
       </div>
     </div>
-    
+    {streamList}
+    <iframe src={`https://player.twitch.tv/?channel=37402112&parent=localhost:3000`} frameborder="0" title="test"></iframe>
   </Container>;
 };
 

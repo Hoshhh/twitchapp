@@ -23,7 +23,10 @@ function App() {
           <Leftbar />
         </Grid>
         <Grid item xs={10} sm={10} md={10} lg={10} xl={10}>
-          <Content data={data} showResults={showResults} />
+          <Content 
+            data={data} 
+            showResults={showResults} 
+          />
         </Grid>
       </Grid>
     </div>

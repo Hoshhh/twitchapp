@@ -107,7 +107,7 @@ const Navbar = (props) => {
                 className={classes.input} 
                 onChange={event => {setSearch('?query=' + event.target.value)}}
                 onFocus={() => props.showResults(true)}
-                
+                onBlur={() => props.showResults(false)}
             />
             <div className={classes.cancel}>
                 <Cancel onClick={() => setOpen(false)}/>
