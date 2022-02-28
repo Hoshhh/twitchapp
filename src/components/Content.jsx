@@ -55,7 +55,7 @@ const Content = ({ data, showResults}) => {
     const results = await api.get('https://api.twitch.tv/helix/users?id=' + id)
     console.log(results.data.data)
     
-    setStreamList(streamList.concat(<Streams streamId={results.data.data[0].id}/>))
+    setStreamList(streamList.concat(<Streams streamId={results.data.data[0].login}/>))
     //showResults.setShowResults(false)
   }
 
@@ -81,7 +81,6 @@ const Content = ({ data, showResults}) => {
       </div>
     </div>
     {streamList}
-    <iframe src={`https://player.twitch.tv/?channel=37402112&parent=localhost:3000`} frameborder="0" title="test"></iframe>
   </Container>;
 };
 
