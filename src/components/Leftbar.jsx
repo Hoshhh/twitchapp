@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
 const Leftbar = (props) => {
   const [streamerList, setStreamerList] = useState([])
   //const [amount, setAmount] = useState(0)
-
+  //console.log(props.streamer)
   const handleStreamers = (n) => {
     props.changeAmount(n)
     let array = [];
@@ -55,14 +55,18 @@ const Leftbar = (props) => {
       array.push(
         <div className={classes.item} key={i}>
           <AccountCircle fontSize="large" />
-          <Typography className={classes.text}>Streamer</Typography>
+          <Typography className={classes.text}>
+            {
+              props.streamer[i]
+            }
+          </Typography>
         </div>
       )
     }
     setStreamerList(array)
   }
 
-  console.log(streamerList)
+  //console.log(streamerList)
   //console.log(amount)
 
   const classes = useStyles();

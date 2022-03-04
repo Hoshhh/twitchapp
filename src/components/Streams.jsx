@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Streams = ({streamId}) => {
-    console.log(streamId)
+    //console.log(streamId)
   return (
     <iframe 
         src={`https://player.twitch.tv/?channel=${streamId}&parent=localhost`} 

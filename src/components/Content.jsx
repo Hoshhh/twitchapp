@@ -48,25 +48,31 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Content = ({ data, showResults, amount }) => {
+const Content = ({ data, showResults, amount, setStreamer }) => {
   const [streamList, setStreamList] = useState([])
   const [currentAmount, setCurrentAmount] = useState(0)
 
+
+  const addStreamer = (newStreamer) => {
+    setStreamer(streamer => [...streamer, newStreamer])
+  }
+
   const fetchUserAvatar = async (id) => {
     const results = await api.get('https://api.twitch.tv/helix/users?id=' + id)
-    console.log(results.data.data)
+    //console.log(results.data.data)
     
     //"amount prop" is the amount of streams you can add
     if (amount > currentAmount) {
+      addStreamer(results.data.data[0].login)
       setStreamList(streamList.concat(<Streams streamId={results.data.data[0].login}/>))
       setCurrentAmount(currentAmount + 1)
     }
   }
-console.log("current amount:" + currentAmount)
+//console.log("current amount:" + currentAmount)
 
   const classes = useStyles({ showResults })
   //console.log(data)
-  //console.log(showResults)
+  console.log(streamList)
   
   return <Container className={classes.container} maxWidth={false}>
     <div className={classes.searchcontainer}>
