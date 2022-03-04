@@ -14,7 +14,7 @@ function App() {
   const [streamer, setStreamer] = useState([])
   //console.log("App: " + data)
   //console.log("Show: " + showResults)
-  console.log(streamer)
+  //console.log(streamer)
   return (
     <div className="App">
       <Navbar 

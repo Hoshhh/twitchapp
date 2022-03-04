@@ -72,14 +72,14 @@ const Content = ({ data, showResults, amount, setStreamer }) => {
 
   const classes = useStyles({ showResults })
   //console.log(data)
-  console.log(streamList)
+  //console.log(streamList)
   
   return <Container className={classes.container} maxWidth={false}>
     <div className={classes.searchcontainer}>
       <div className={classes.searchbox}>
         {
           data.map((streamer) => (
-          <li className={classes.searchitems}>
+          <li className={classes.searchitems} key={streamer.id}>
             <div className={classes.streamerContainer}>
               <Typography varaint="h5">{streamer.name}</Typography>
               <IconButton className={classes.addButton} onMouseDown={(id) => fetchUserAvatar(streamer.id)}>
