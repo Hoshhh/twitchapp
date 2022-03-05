@@ -63,7 +63,9 @@ const Content = ({ data, showResults, amount, setStreamer }) => {
     
     //"amount prop" is the amount of streams you can add
     if (amount > currentAmount) {
-      addStreamer(results.data.data[0].login)
+      addStreamer(
+        results.data.data[0].login
+      )
       setStreamList(streamList.concat(<Streams streamId={results.data.data[0].login}/>))
       setCurrentAmount(currentAmount + 1)
     }

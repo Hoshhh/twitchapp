@@ -44,63 +44,105 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Leftbar = (props) => {
-  const [streamerList, setStreamerList] = useState([])
-  const [update, setUpdate] = useState(props.streamer)
+  const [icon2Color, setIcon2Color] = useState(false) 
+  const [icon4Color, setIcon4Color] = useState(false) 
+  const [icon6Color, setIcon6Color] = useState(false) 
+  const [icon8Color, setIcon8Color] = useState(false) 
 
-  useEffect(() => {
-    setUpdate(props.streamer)
-  }, [props.streamer])
-  //const [amount, setAmount] = useState(0)
-  //console.log(props.streamer)
   const handleStreamers = (n) => {
     props.changeAmount(n)
-    let array = [];
-    
-    for(let i=0; i < n; i++) {
-      array.push(
-        <div className={classes.item} key={i}>
-          <AccountCircle fontSize="large" key={i + 1}/>
-          <Typography className={classes.text} key={i + 2}>
-            {
-              props.streamer.length > i ? props.streamer[i] : 'streamer'
-            }
-          </Typography>
-        </div>
-      )
+
+    if (n === 2) {
+      setIcon2Color(true)
+      setIcon4Color(false)
+      setIcon6Color(false)
+      setIcon8Color(false)
     }
-    setStreamerList(array)
+    if (n === 4) {
+      setIcon2Color(false)
+      setIcon4Color(true)
+      setIcon6Color(false)
+      setIcon8Color(false)
+    }
+    if (n === 6) {
+      setIcon2Color(false)
+      setIcon4Color(false)
+      setIcon6Color(true)
+      setIcon8Color(false)
+    }
+    if (n === 8) {
+      setIcon2Color(false)
+      setIcon4Color(false)
+      setIcon6Color(false)
+      setIcon8Color(true)
+    }
   }
-  console.log(update)
-  //console.log(streamerList)
-  
+
 
   const classes = useStyles();
   return <Container className={classes.container}>
     <div className={classes.streams}>
       <div className={classes.btnContainer}>
         <IconButton onClick={() => handleStreamers(2)}>
-          <Filter2 className={classes.streamsBtn}/>
+          <Filter2 
+            className={classes.streamsBtn} 
+            sx={[
+              icon2Color && {
+                color: '#00897B'
+              }
+            ]}
+          />
         </IconButton>
       </div>
       <div className={classes.btnContainer}>
         <IconButton onClick={() => handleStreamers(4)}>
-          <Filter4 className={classes.streamsBtn}/>
+          <Filter4 
+            className={classes.streamsBtn}
+            sx={[
+              icon4Color && {
+                color: '#00897B'
+              }
+            ]}
+          />
         </IconButton>
       </div>
       <div className={classes.btnContainer}>
         <IconButton onClick={() => handleStreamers(6)}>
-          <Filter6 className={classes.streamsBtn}/>
+          <Filter6 
+            className={classes.streamsBtn}
+            sx={[
+              icon6Color && {
+                color: '#00897B'
+              }
+            ]}
+          />
         </IconButton>
       </div>
       <div className={classes.btnContainer}>
         <IconButton onClick={() => handleStreamers(8)}>
-          <Filter8 className={classes.streamsBtn}/>
+          <Filter8 
+            className={classes.streamsBtn}
+            sx={[
+              icon8Color && {
+                color: '#00897B'
+              }
+            ]}
+          />
         </IconButton>
       </div>
     </div>
 
     {
-      streamerList
+      props.streamer.map(streamer => (
+      <div className={classes.item}>
+        <AccountCircle fontSize="large" />
+        <Typography className={classes.text} >
+          {
+            streamer
+          }
+        </Typography>
+      </div>
+      ))
     }
   </Container>
 };
