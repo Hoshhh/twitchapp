@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Test from './components/Test'
 import Grid from '@mui/material/Grid'
 import './app.css'
 import Leftbar from './components/Leftbar';
@@ -11,10 +10,9 @@ function App() {
   const [data, setData] = useState([])
   const [showResults, setShowResults] = useState(false)
   const [amount, setAmount] = useState(0)
-  const [streamer, setStreamer] = useState([])
-  //console.log("App: " + data)
-  //console.log("Show: " + showResults)
-  console.log(streamer)
+  const [streamList, setStreamList] = useState([])
+  const [currentAmount, setCurrentAmount] = useState(streamList.length)
+  
   return (
     <div className="App">
       <Navbar 
@@ -25,7 +23,11 @@ function App() {
         <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
           <Leftbar 
             changeAmount={amount => setAmount(amount)}
-            streamer={streamer}
+            amount={amount}
+            setStreamList={streamList => setStreamList(streamList)}
+            streamList={streamList}
+            setCurrentAmount={currentAmount => setCurrentAmount(currentAmount)}
+            currentAmount={currentAmount}
           />
         </Grid>
         <Grid item xs={10} sm={10} md={10} lg={10} xl={10}>
@@ -33,7 +35,10 @@ function App() {
             data={data} 
             showResults={showResults} 
             amount={amount}
-            setStreamer={streamer => setStreamer(streamer)}
+            setStreamList={streamList => setStreamList(streamList)}
+            streamList={streamList}
+            setCurrentAmount={currentAmount => setCurrentAmount(currentAmount)}
+            currentAmount={currentAmount}
           />
         </Grid>
       </Grid>

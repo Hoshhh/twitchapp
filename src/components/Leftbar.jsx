@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
-import { alpha, makeStyles, Typography } from '@material-ui/core';
-import { AccountCircle, Filter2, Filter4, Filter6, Filter8 } from '@mui/icons-material';
-import { useEffect } from 'react';
+import { alpha, Avatar, makeStyles, Typography } from '@material-ui/core';
+import { Filter2, Filter4, Filter6, Filter8, RemoveCircleOutline } from '@mui/icons-material';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -21,12 +20,18 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.spacing(4),
       [theme.breakpoints.up("sm")]: {
         marginBottom: theme.spacing(3),
-      }
+      },
+      justifyContent: 'space-between'
+    },
+    streamerContainer: {
+      display: 'flex',
+      alignItems: 'center',
     },
     text: {
       [theme.breakpoints.down("sm")]: {
         display: 'none'
-      }
+      },
+      marginLeft: '10px'
     },
     streams: {
       marginBottom: theme.spacing(6),
@@ -40,6 +45,13 @@ const useStyles = makeStyles((theme) => ({
     },
     btnContainer: {
       display: 'inline',
+    },
+    removeBtn: {
+      color: '#F5F7FA'
+    },
+    avatar: {
+      width: '35px',
+      height: '35px'
     }
 }));
 
@@ -51,6 +63,10 @@ const Leftbar = (props) => {
 
   const handleStreamers = (n) => {
     props.changeAmount(n)
+
+    props.setStreamList([])
+    props.setCurrentAmount(0)
+    
 
     if (n === 2) {
       setIcon2Color(true)
@@ -75,6 +91,15 @@ const Leftbar = (props) => {
       setIcon4Color(false)
       setIcon6Color(false)
       setIcon8Color(true)
+    }
+  }
+  const removeStreamer = (id) => {
+    const newList = props.streamList.filter(stream => stream.props.streamId !== id)
+    //console.log(newList)
+    props.setStreamList(newList)
+
+    if (props.currentAmount > 0) {
+      props.setCurrentAmount(newList.length)
     }
   }
 
@@ -133,14 +158,19 @@ const Leftbar = (props) => {
     </div>
 
     {
-      props.streamer.map(streamer => (
+      props.streamList.map(streamer => (
       <div className={classes.item}>
-        <AccountCircle fontSize="large" />
-        <Typography className={classes.text} >
-          {
-            streamer
-          }
-        </Typography>
+        <div className={classes.streamerContainer}>
+          <Avatar className={classes.avatar} src={streamer.props.avatar}/>
+          <Typography className={classes.text} >
+            {
+              streamer.props.streamId
+            }
+          </Typography>
+        </div>
+        <IconButton onClick={() => removeStreamer(streamer.props.streamId)}>
+          <RemoveCircleOutline className={classes.removeBtn}/>
+        </IconButton>
       </div>
       ))
     }
