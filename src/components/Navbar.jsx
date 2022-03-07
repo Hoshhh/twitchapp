@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import api from '../api'
 import { alpha, AppBar, IconButton, InputBase, makeStyles, Toolbar, Typography } from '@material-ui/core'
-import { Cancel, GitHub, Search, SettingsSystemDaydreamTwoTone } from '@mui/icons-material'
+import { Cancel, GitHub, Search } from '@mui/icons-material'
 
 const useStyles = makeStyles((theme) => ({
     appbar: {
@@ -117,7 +117,7 @@ const Navbar = (props) => {
             <div className={classes.searchButton}>
                 <Search onClick={() => setOpen(true)} />
             </div>
-            <IconButton href="https://github.com">
+            <IconButton href="https://github.com/Hoshhh/twitchapp" target="_blank">
                 <GitHub className={classes.gitIcon} fontSize="large" />  
             </IconButton>
         </div>

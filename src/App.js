@@ -6,6 +6,7 @@ import Content from './components/Content';
 import Navbar from './components/Navbar';
 
 
+
 function App() {
   const [data, setData] = useState([])
   const [showResults, setShowResults] = useState(false)
@@ -20,7 +21,7 @@ function App() {
         showResults={result => setShowResults(result)}
       />
       <Grid container spacing={0}>
-        <Grid item xs={2} sm={2} md={2} lg={2} xl={2}>
+        <Grid item xs={1.5} sm={1.5} md={1.5} lg={1.5} xl={1.5}>
           <Leftbar 
             changeAmount={amount => setAmount(amount)}
             amount={amount}
@@ -30,7 +31,7 @@ function App() {
             currentAmount={currentAmount}
           />
         </Grid>
-        <Grid item xs={10} sm={10} md={10} lg={10} xl={10}>
+        <Grid item xs={10.5} sm={10.5} md={10.5} lg={10.5} xl={10.5}>
           <Content 
             data={data} 
             showResults={showResults} 

@@ -10,8 +10,8 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: '#323F4B',
       color: '#F5F7FA',
       paddingTop: theme.spacing(10),
-      height: '100vh',
-      maxHeight: '100vh',
+      height: '100%',
+      minHeight: '100vh',
       display: (props) => (props.showResults ? "block" : "none"),
     },
     searchcontainer: {

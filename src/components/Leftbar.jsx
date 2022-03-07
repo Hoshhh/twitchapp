@@ -8,7 +8,8 @@ const useStyles = makeStyles((theme) => ({
     container: {
       backgroundColor: '#1F2933',
       color: '#F5F7FA',
-      height: '100vh',
+      height: '100%',
+      minHeight: '100vh',
       paddingTop: theme.spacing(12),
       [theme.breakpoints.up("sm")]: {
         borderRight: '1px solid #3E4C59',
