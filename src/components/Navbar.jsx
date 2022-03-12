@@ -86,7 +86,7 @@ const Navbar = (props) => {
             )))
         }
         fetchStreams();
-    })
+    }, [search])
 
     return <AppBar position="fixed" className={classes.appbar}>
       <Toolbar className={classes.toolbar}>
