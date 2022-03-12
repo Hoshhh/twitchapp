@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import { alpha, Box, IconButton, makeStyles, Paper, Typography } from '@material-ui/core';
+import React from 'react';
+import { alpha, IconButton, makeStyles, Typography } from '@material-ui/core';
 import Container from '@mui/material/Container';
 import api from '../api';
 import { AddCircleOutline } from '@mui/icons-material';
