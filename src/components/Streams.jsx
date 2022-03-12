@@ -32,7 +32,7 @@ const Streams = ({ streamId, amount }) => {
         <iframe 
             className={classes.video}
             onLoad={() => onLoad()}
-            src={`https://player.twitch.tv/?channel=${streamId}&parent=localhost`} 
+            src={`https://player.twitch.tv/?channel=${streamId}&parent=https://twitchms.netlify.app/`} 
             frameborder="0" 
             title="test" 
             height={height}
