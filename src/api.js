@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const token = 'np33eme10w093fjur6bogaywa15tos'
+const token = 'hz4hg4ypkw5mbm6ixksjqwje9ffl1x'
 let api = axios.create({
     headers: {
         'Client-ID': '58wc6239ajg6k64g68fiild7mksvnw',
