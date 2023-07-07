@@ -13,6 +13,7 @@ function App() {
   const [amount, setAmount] = useState(0)
   const [streamList, setStreamList] = useState([])
   const [currentAmount, setCurrentAmount] = useState(streamList.length)
+
   
   return (
     <div className="App">
